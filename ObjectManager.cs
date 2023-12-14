@@ -1,29 +1,27 @@
-using System.Collections.Generic;
-using UnityEngine;
-using TMPro;
-
+//Object Manager
+using System.Collections.Generic; // Provides classes for creating generic collections like List<T>.
+using UnityEngine; // Core namespace for Unity engine, providing access to common Unity classes
+using TMPro;  // Namespace for TextMesh Pro, a tool for advanced text rendering in Unity.
+//The ObjectManager class manages a collection of objects and their descriptions in a Unity scene.
 public class ObjectManager : MonoBehaviour
 {
-    // Serializable class to hold both the GameObject and its description
-    [System.Serializable]
+ // A nested class representing a GameObject and its associated text description
+    [System.Serializable] // This attribute makes the class visible in the Unity Editor.
     public class DescribedObject
     {
-        public GameObject gameObject;
-        public string description;
+        public GameObject gameObject;  // Stores a reference to the GameObject in the scene
+        public string description;  // Stores the text description of the GameObject
     }
-
-    // List of described objects. You can add objects and their descriptions in the Unity Editor.
+    // List of described objects. We can add objects and their descriptions in the Unity Editor
     public List<DescribedObject> describedObjects = new List<DescribedObject>();
 
-    // Text Mesh Pro component to display the description
+      // A reference to a TextMeshProUGUI component, used for displaying the descriptions on the UI (the menu clickable)
     public TextMeshProUGUI textComponent;
-
     void Start()
     {
-        // Optional: Initialize with all objects active and no text
+        // Initialize with all objects active and no text
         ResetObjects();
     }
-
     // Focus on a specific object
     public void Focus(string objectName)
     {
@@ -43,7 +41,6 @@ public class ObjectManager : MonoBehaviour
             }
         }
     }
-
     // Reset to show all objects and clear the text
     public void ResetObjects()
     {
@@ -54,3 +51,4 @@ public class ObjectManager : MonoBehaviour
         textComponent.text = "";
     }
 }
+
